@@ -9,30 +9,30 @@ class XMPPHandler(webapp.RequestHandler):
     def post(self):
         message = xmpp.Message(self.request.POST)
         sender = cgi.escape(self.request.get('from')).split("/")[0]
-        body = message.body
+        bodystart = message.body.lower()[0:2]
 
         with open('data.txt') as f:
             content = f.readlines()
 
-        if body.lower() == 'mo':
+        if bodystart == 'mo':
             message.reply(content[0] + '\n' + content[1] + '\n' + content[2] + '\n' + content[3] + '\n' + content[4] + '\n')
 
-        elif body.lower() == 'tu':
+        elif bodystart == 'tu':
             message.reply(content[5] + '\n' + content[6] + '\n' + content[7] + '\n' + content[8] + '\n' + content[9] + '\n')
 
-        elif body.lower() == 'we':
+        elif bodystart == 'we':
             message.reply(content[10] + '\n' + content[11] + '\n' + content[12] + '\n' + content[13] + '\n' + content[14] + '\n')
 
-        elif body.lower() == 'th':
+        elif bodystart == 'th':
             message.reply(content[15] + '\n' + content[16] + '\n' + content[17] + '\n' + content[18] + '\n' + content[19] + '\n')
 
-        elif body.lower() == 'fr':
+        elif bodystart == 'fr':
             message.reply(content[20] + '\n' + content[21] + '\n' + content[22] + '\n' + content[23] + '\n' + content[24] + '\n')
 
-        elif body.lower() == 'sa':
+        elif bodystart == 'sa':
             message.reply(content[25] + '\n' + content[26] + '\n' + content[27] + '\n' + content[28] + '\n' + content[29] + '\n')
 
-        elif body.lower() == 'su':
+        elif bodystart == 'su':
             message.reply(content[30] + '\n' + content[31] + '\n' + content[32] + '\n' + content[33] + '\n' + content[34] + '\n')
 
         else :
